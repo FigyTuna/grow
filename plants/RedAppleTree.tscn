@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://stageplantdata.gd" type="Script" id=1]
-[ext_resource path="res://Items/Apple.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/treesfruit/tree.png" type="Texture" id=3]
-[ext_resource path="res://images/treesfruit/apple/applebranches.png" type="Texture" id=4]
-[ext_resource path="res://images/treesfruit/apple/apple.png" type="Texture" id=5]
-
-
+[ext_resource path="res://images/treesfruit/tree.png" type="Texture" id=2]
+[ext_resource path="res://images/treesfruit/apple/applebranches.png" type="Texture" id=3]
+[ext_resource path="res://images/treesfruit/apple/apple.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "sway"
@@ -54,9 +51,9 @@ rotation = -0.00858422
 script = ExtResource( 1 )
 plant_name = "Red Apple Tree"
 baby_stage = 50
-min_life = 300
-max_life = 400
-item = ExtResource( 2 )
+min_life = 350
+max_life = 450
+harvest_time = 60
 dark = Color( 0.752941, 0, 0, 1 )
 bg = Color( 1, 0.168627, 0.168627, 1 )
 light = Color( 1, 0.592157, 0.592157, 1 )
@@ -66,16 +63,16 @@ anims/sway = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8.20221, -397.806 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 8.20221, -397.806 )
 rotation = -0.00220733
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="stage1" type="Sprite" parent="."]
 visible = false
 position = Vector2( 87.2044, -414.178 )
 rotation = 0.17392
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 offset = Vector2( -80, 35 )

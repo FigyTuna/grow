@@ -7,15 +7,18 @@ var messages = []
 var hints = [
 	["Hint: If a plant is sparkling,","tap it 3 times to harvest it."],
 	["Hint: If you are out of room,", "press and hold on a plant","to get rid of it."],
-	["Hint: You can sell basic", "seeds to buy more kinds", "of seeds."],
-	["Hint: Fertilizer will make a", "plant ready to harvest", "immediately"],
+	["Hint: You can sell items to", "buy seeds and fertilizer."],
+	["Hint: Try to maintain", "enough of each type of", "seed and essence."],
+	["Hint: Fertilizer will make a", "plant ready to harvest", "immediately."],
 	["Hint: You can use essence", "more than once on a", "budding plant."],
 	["Hint: When a plant slows", "down its movement, it is", "about to wilt."],
-	["Hint: You can combine lots", "of one kind of natural", "material into fertilizer."],
+	["Hint: Combine lots of stalk", "together to unlock extra","space for plants."],
 	["Hint: You can sell fruit", "for a high price."],
+	["Hint: You can combine lots", "of one kind of natural", "material into fertilizer."],
 	["Hint: Some essence has a", "random chance of turning", "a bud into a rare plant."],
+	["Hint: Sometimes, you can", "use fruit in place of", "essence."]
 ]
-var hint_timer = 0
+var hint_timer = 40
 var hint_count = 0
 
 const spacing = 50
@@ -39,6 +42,8 @@ func message(t, pd=false):
 	messages.push_front(m)
 	if pd:
 		play_die()
+	if t.find("Discovered") > -1:
+		play_discover()
 	do_spacing()
 
 func finish(_n):
@@ -67,3 +72,6 @@ func play_sell():
 	
 func play_combine():
 	$Combine.play()
+
+func play_discover():
+	$Discover.play()

@@ -39,7 +39,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "sparkle"
-length = 4.0
+length = 3.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sparkle:modulate")
@@ -48,10 +48,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.3, 2.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.3, 2.9, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sparkle2:modulate")
@@ -93,5 +93,5 @@ texture = ExtResource( 3 )
 [node name="Sparkle2" type="Sprite" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -94.6305, -131.486 )
+position = Vector2( -94.631, -131.486 )
 texture = ExtResource( 3 )

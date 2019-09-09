@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nature8.wav-37377cc0927bcb0ed4132829ecb3d144.sample"
+
+[deps]
+
+source_file="res://sfx/nature8.wav"
+dest_files=[ "res://.import/nature8.wav-37377cc0927bcb0ed4132829ecb3d144.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

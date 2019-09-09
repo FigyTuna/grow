@@ -54,13 +54,13 @@ until_adult = 80
 min_life = 400
 max_life = 500
 harvest_time = 80
-chances = [ 1 ]
-item_enum = [ 10 ]
+chances = [ 3, 1, 1 ]
+item_enum = [ 10, 3, 4 ]
 max_harvested = 2
 dark = Color( 0.6, 0, 0.0823529, 1 )
 bg = Color( 1, 0, 0.254902, 1 )
 light = Color( 1, 0.34902, 0.564706, 1 )
-change_items = [ "Magic Essence", "Special Essence", "Happy Essence", "Fun Essence", "Fruit 1", "Fruit 2" ]
+change_items = [ "Magic Essence", "Special Essence", "Happy Essence", "Fun Essence", "Apple", "Cherry" ]
 changes_enum = [ [ 11 ], [ 22 ], [ 13 ], [ 8 ], [ 20, 21 ], [ 22, 23 ] ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

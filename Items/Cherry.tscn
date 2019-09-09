@@ -6,6 +6,7 @@
 
 [node name="Cherry" type="Node2D"]
 script = ExtResource( 1 )
+item_name = "Cherry"
 icon = ExtResource( 2 )
 item_type = 2
 sell_value = 8

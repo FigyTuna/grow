@@ -53,6 +53,7 @@ func _on_UseSlot_selected(_index):
 	if use_quantity < 1:
 		use_item = null
 		$UseSlot.remove_item(0)
+		check_for_no_seeds()
 	else:
 		$UseSlot.set_item_text(0, "x" + str(use_quantity))
 	update_buttons()
@@ -65,6 +66,14 @@ func use_up(q = 1):
 	else:
 		$UseSlot.set_item_text(0, "x" + str(use_quantity))
 	update_buttons()
+
+func check_for_no_seeds():
+	var no_seeds = true
+	for item in inv:
+		if item.item_name.find("Seed") > -1:
+			no_seeds = false
+	if no_seeds and can_sell:
+		add_to_inv(Seed1.instance(), 1)
 
 func return_all():
 	if use_item:

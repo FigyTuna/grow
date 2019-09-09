@@ -58,3 +58,6 @@ func ready_action(s):
 # warning-ignore:unused_argument
 func change(item):
 	return null
+
+func full_harvest(stage):
+	return stage >= max_harvested

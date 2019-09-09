@@ -24,8 +24,15 @@ func _ready():
 func update_discovered(n):
 	if discovered.find(n) < 0:
 		discovered.append(n)
-		$dict.text = "Plants discovered: " + str(len(discovered)) + "/32"
-		emit_signal("message", "Discovered " + n + "!")
+		$dict.text = "Plants discovered: " + str(len(discovered)) + "/27"
+		if n.find("Yellow Cherry Tree") > -1:
+			emit_signal("message", "Discovered ")
+			emit_signal("message", n + "1")
+		else:
+			emit_signal("message", "Discovered " + n + "!")
+		if len(discovered) >= 27:
+			emit_signal("message", "You discovered them all!")
+			emit_signal("message", "Thanks for playing!")
 
 func update_can_buy(money):
 	if money >= cost1:

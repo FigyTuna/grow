@@ -100,18 +100,21 @@ rotation = -0.0116307
 texture = ExtResource( 3 )
 
 [node name="stage1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 107.625, -420.932 )
 rotation = 0.0116214
 texture = ExtResource( 4 )
 offset = Vector2( -55, 10 )
 
 [node name="stage2" type="Sprite" parent="."]
+visible = false
 position = Vector2( -138.716, -585.956 )
 rotation = -0.0258543
 texture = ExtResource( 5 )
 offset = Vector2( 180, 180 )
 
 [node name="stage3" type="Sprite" parent="."]
+visible = false
 position = Vector2( 81.3164, -686.406 )
 rotation = 0.028659
 texture = ExtResource( 6 )

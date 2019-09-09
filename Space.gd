@@ -40,9 +40,9 @@ func fertilize():
 		return current_plant.fertilize()
 	return false
 
-func get_colors():
+func get_colors(dead=false):
 	var colors = {}
-	if current_plant:
+	if current_plant and not dead:
 		colors["light"] = current_plant.fd().light
 		colors["dark"] = current_plant.fd().dark
 		colors["bg"] = current_plant.fd().bg

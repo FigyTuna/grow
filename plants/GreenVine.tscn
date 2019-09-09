@@ -52,17 +52,15 @@ script = ExtResource( 1 )
 plant_name = "Green Vine"
 baby_stage = 40
 until_adult = 50
-min_life = 300
-max_life = 400
 harvest_time = 90
-chances = [ 2, 1 ]
-item_enum = [ 4, 9 ]
+chances = [ 1, 2, 2 ]
+item_enum = [ 5, 9, 4 ]
 max_harvested = 3
 dark = Color( 0, 0.6, 0, 1 )
 bg = Color( 0, 0.839216, 0, 1 )
 light = Color( 0.552941, 1, 0.552941, 1 )
 change_items = [ "Happy Essence", "Fun Essence", "Special Essence", "Magic Essence" ]
-changes_enum = [ [ 6 ], [ 24 ], [ 10 ], [ 19 ] ]
+changes_enum = [ [ 6 ], [ 25 ], [ 10 ], [ 19, 10 ] ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

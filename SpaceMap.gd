@@ -52,8 +52,8 @@ func go_to_space(num):
 	old_space = num
 	update_colors(num)
 
-func update_colors(num):
-	set_colors(spaces[num].get_colors())
+func update_colors(num,dead=false):
+	set_colors(spaces[num].get_colors(dead))
 
 func set_colors(colors):
 	old_colors = new_colors

@@ -59,7 +59,7 @@ max_harvested = 2
 dark = Color( 0.160784, 0, 0.32549, 1 )
 bg = Color( 0.596078, 0.4, 0.4, 1 )
 light = Color( 0.866667, 0.8, 0.933333, 1 )
-change_items = [ "Fruit 1", "Special Essence" ]
+change_items = [ "Apple", "Special Essence" ]
 changes_enum = [ [ 21, 25 ], [ 18, 19, 15 ] ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -96,6 +96,7 @@ func _input(event):
 		else:
 			if hint_plant:
 				$Messages.message("Hint: Try planting a seed.")
+				$Messages.message("Tap the check mark to use.")
 				$Messages.play_hint()
 				hint_plant = false
 			elif hint_fert:
@@ -132,6 +133,7 @@ func _input(event):
 				var plant = Plant.instance()
 				plant.connect("grow1", $Dict, "update_discovered")
 				plant.connect("die", $Messages, "message")
+				plant.connect("die", self, "die_change_colors")
 				var inst
 				if $Inventory.use_item.item_name == "Basic Seed":
 					inst = Plants[0].instance()
@@ -163,21 +165,28 @@ func _input(event):
 	
 	if event.is_action_pressed("sell"):
 		var gain = $Inventory.use_item.sell_value * $Inventory.use_quantity
-		$Messages.message("Sold " + $Inventory.use_item.item_name + " x" + str($Inventory.use_quantity) + " for $" + str(gain))
+		$Messages.message("Sold " + $Inventory.use_item.item_name + " x" + str($Inventory.use_quantity))
+		$Messages.message("Got $" + str(gain) + ".")
 		money += gain
 		$Inventory.use_up($Inventory.use_quantity)
 		$Messages.play_sell()
 		update_money()
+		$Inventory.check_for_no_seeds()
 	
 	if event.is_action_pressed("combine"):
 		if $Inventory.use_item.item_type == 3:
 			$SpaceMap.add_space()
 			$Messages.message("Unlocked an extra space!")
+			$Right.visible = true
 		else:
 			$Messages.message("Made fertilizer.")
 			$Inventory.add_to_inv($Inventory.use_item.combine_item.instance())
+			$Inventory.check_for_no_seeds()
 		$Messages.play_combine()
 		$Inventory.use_up($Inventory.use_item.combine_amount)
+
+func die_change_colors(_n,_t):
+	$SpaceMap.update_colors(current_space,true)
 
 func update_money():
 	$Inventory/Money.text = "$" + str(money)
