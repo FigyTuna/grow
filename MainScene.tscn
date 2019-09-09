@@ -1,0 +1,114 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://MainScene.gd" type="Script" id=1]
+[ext_resource path="res://grow.ogg" type="AudioStream" id=2]
+[ext_resource path="res://SpaceMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://images/menu/arrowleft.png" type="Texture" id=4]
+[ext_resource path="res://images/menu/arrowleft2.png" type="Texture" id=5]
+[ext_resource path="res://images/menu/arrow right.png" type="Texture" id=6]
+[ext_resource path="res://images/menu/arrowright2.png" type="Texture" id=7]
+[ext_resource path="res://images/menu/inv1.png" type="Texture" id=8]
+[ext_resource path="res://images/menu/inv2.png" type="Texture" id=9]
+[ext_resource path="res://images/menu/dict1.png" type="Texture" id=10]
+[ext_resource path="res://images/menu/dict2.png" type="Texture" id=11]
+[ext_resource path="res://Messages.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Dict.tscn" type="PackedScene" id=14]
+[ext_resource path="res://images/menu/title.png" type="Texture" id=15]
+[ext_resource path="res://colorize.tres" type="Material" id=16]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 226, 226 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 360, 400 )
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="SpaceMap" parent="." instance=ExtResource( 3 )]
+position = Vector2( 300, 773.336 )
+
+[node name="Left" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 13, 870 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+shape = SubResource( 2 )
+action = "left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2( 451.049, 870 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+shape = SubResource( 2 )
+action = "right"
+
+[node name="Inv" type="TouchScreenButton" parent="."]
+position = Vector2( 159, 870 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+shape = SubResource( 2 )
+action = "inv"
+
+[node name="DictButton" type="TouchScreenButton" parent="."]
+position = Vector2( 305.055, 870 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 11 )
+shape = SubResource( 2 )
+action = "dict"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 293.011, 390.882 )
+shape = SubResource( 3 )
+action = "flower"
+
+[node name="Messages" parent="." instance=ExtResource( 12 )]
+
+[node name="Inventory" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="Dict" parent="." instance=ExtResource( 14 )]
+visible = false
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 299.38, 488.767 )
+scale = Vector2( 1.27341, 1.27341 )
+texture = ExtResource( 15 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource( 16 )
+margin_left = -36.0
+margin_top = -34.0
+margin_right = 698.0
+margin_bottom = 1046.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+[connection signal="buy" from="Dict" to="." method="_on_buy"]

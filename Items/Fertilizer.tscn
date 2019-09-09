@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Item.gd" type="Script" id=1]
+[ext_resource path="res://images/menu/fert2.png" type="Texture" id=2]
+
+[node name="Fertilizer" type="Node2D"]
+script = ExtResource( 1 )
+item_name = "Fertilizer"
+icon = ExtResource( 2 )
+item_type = 4
+sell_value = 15

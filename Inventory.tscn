@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Inventory.gd" type="Script" id=1]
+[ext_resource path="res://images/empty.png" type="Texture" id=2]
+[ext_resource path="res://menutheme.tres" type="Theme" id=3]
+[ext_resource path="res://images/menu/use2.png" type="Texture" id=4]
+[ext_resource path="res://images/menu/use1.png" type="Texture" id=5]
+[ext_resource path="res://images/menu/combine1.png" type="Texture" id=6]
+[ext_resource path="res://images/menu/combine2.png" type="Texture" id=7]
+[ext_resource path="res://images/menu/money1.png" type="Texture" id=8]
+[ext_resource path="res://images/menu/money2.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 226, 226 )
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 38.0
+margin_top = 436.0
+margin_right = 564.0
+margin_bottom = 864.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 90, 90 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+margin_left = 194.0
+margin_top = 241.0
+margin_right = 380.0
+margin_bottom = 425.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 90, 90 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+margin_left = 38.0
+margin_top = 351.0
+margin_right = 181.0
+margin_bottom = 423.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 90, 90 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 45.9641
+margin_top = 452.296
+margin_right = 586.964
+margin_bottom = 871.296
+theme = ExtResource( 3 )
+allow_reselect = true
+max_columns = 4
+fixed_column_width = 120
+icon_mode = 0
+icon_scale = 1.5
+fixed_icon_size = Vector2( 64, 64 )
+
+[node name="UseSlot" type="ItemList" parent="."]
+margin_left = 224.0
+margin_top = 285.0
+margin_right = 530.0
+margin_bottom = 434.0
+theme = ExtResource( 3 )
+allow_reselect = true
+fixed_column_width = 120
+icon_mode = 0
+icon_scale = 1.5
+fixed_icon_size = Vector2( 64, 64 )
+
+[node name="Use" type="TouchScreenButton" parent="."]
+position = Vector2( 229.893, 109 )
+scale = Vector2( 0.254158, 0.254158 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+shape = SubResource( 1 )
+action = "use"
+
+[node name="Combine" type="TouchScreenButton" parent="."]
+position = Vector2( 394.974, 109 )
+scale = Vector2( 0.254158, 0.254158 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+shape = SubResource( 1 )
+action = "combine"
+
+[node name="Sell" type="TouchScreenButton" parent="."]
+position = Vector2( 65.128, 109 )
+scale = Vector2( 0.254158, 0.254158 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+shape = SubResource( 1 )
+action = "sell"
+
+[node name="Money" type="Label" parent="."]
+margin_left = 54.2723
+margin_top = 367.876
+margin_right = 171.272
+margin_bottom = 411.876
+theme = ExtResource( 3 )
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_selected"]
+[connection signal="item_selected" from="UseSlot" to="." method="_on_UseSlot_selected"]

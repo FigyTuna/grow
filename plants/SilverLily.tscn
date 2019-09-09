@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://plantdata.gd" type="Script" id=1]
+[ext_resource path="res://images/flowers/flower2/tulipstem.png" type="Texture" id=2]
+[ext_resource path="res://images/flowers/flower2/tulipleaves.png" type="Texture" id=3]
+[ext_resource path="res://images/flowers/flower2/buds/lily.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sway"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.5, 2.5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.0, 3.0 ]
+}
+
+[node name="SilverLily" type="Node2D"]
+rotation = 0.0158242
+script = ExtResource( 1 )
+plant_name = "Silver Lily"
+baby_stage = 150
+until_adult = 160
+min_life = 1000
+max_life = 1200
+harvest_time = 10
+chances = [ 3, 3, 1, 1 ]
+item_enum = [ 6, 10, 0, 1 ]
+max_harvested = 2
+dark = Color( 0.305882, 0.345098, 0.258824, 1 )
+bg = Color( 0.768627, 0.815686, 0.709804, 1 )
+light = Color( 0.92549, 0.941176, 0.905882, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sway = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.05054, -383.452 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -48.5968, -48.58 )
+rotation = 0.00836679
+texture = ExtResource( 3 )
+offset = Vector2( 50, -320 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 43.4831, -522.102 )
+rotation = -0.0156746
+texture = ExtResource( 4 )
+offset = Vector2( -40, 150 )

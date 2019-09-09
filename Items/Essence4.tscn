@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Item.gd" type="Script" id=1]
+[ext_resource path="res://images/menu/essence4.png" type="Texture" id=2]
+
+[node name="Essence4" type="Node2D"]
+script = ExtResource( 1 )
+item_name = "Special Essence"
+icon = ExtResource( 2 )
+item_type = 1
+sell_value = 2

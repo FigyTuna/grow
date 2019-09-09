@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Item.gd" type="Script" id=1]
+[ext_resource path="res://images/menu/seeds1.png" type="Texture" id=2]
+[ext_resource path="res://Items/Fertilizer.tscn" type="PackedScene" id=3]
+
+[node name="Seed1" type="Node2D"]
+script = ExtResource( 1 )
+item_name = "Basic Seed"
+icon = ExtResource( 2 )
+combine_amount = 15
+combine_item = ExtResource( 3 )

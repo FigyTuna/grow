@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://plantdata.gd" type="Script" id=1]
+[ext_resource path="res://images/flowers/flower2/tulipstem.png" type="Texture" id=2]
+[ext_resource path="res://images/flowers/flower2/tulipleaves.png" type="Texture" id=3]
+[ext_resource path="res://images/flowers/flower2/buds/lily.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sway"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.4, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2, 4.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.0, 3.0 ]
+}
+
+[node name="GoldLily" type="Node2D"]
+rotation = 0.00335126
+script = ExtResource( 1 )
+plant_name = "Gold Lily"
+baby_stage = 300
+until_adult = 400
+min_life = 3000
+max_life = 5000
+harvest_time = 10
+chances = [ 1, 1, 1, 1 ]
+item_enum = [ 5, 6, 9, 10 ]
+max_harvested = 5
+dark = Color( 0.403922, 0.364706, 0.2, 1 )
+bg = Color( 0.886275, 0.835294, 0.639216, 1 )
+light = Color( 0.964706, 0.945098, 0.882353, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sway = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.05054, -383.452 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -79.2154, -11.2179 )
+rotation = 0.0864779
+texture = ExtResource( 3 )
+offset = Vector2( 75, -350 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 31.4146, -531.413 )
+rotation = -0.0306236
+texture = ExtResource( 4 )
+offset = Vector2( -30, 160 )

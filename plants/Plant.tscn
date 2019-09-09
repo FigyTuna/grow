@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://plant.gd" type="Script" id=1]
+[ext_resource path="res://images/bud.png" type="Texture" id=2]
+[ext_resource path="res://images/sparkle.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bud_sway"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bud:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "grow"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Data:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "sparkle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sparkle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sparkle2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Plant" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bud_sway = SubResource( 1 )
+anims/grow = SubResource( 2 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/sparkle = SubResource( 3 )
+
+[node name="Bud" type="Sprite" parent="."]
+position = Vector2( 3.24249e-05, -2.0502 )
+rotation = -0.0285608
+texture = ExtResource( 2 )
+offset = Vector2( 30, -280 )
+
+[node name="Data" type="Node2D" parent="."]
+visible = false
+
+[node name="Sparkle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 105.924, -351.984 )
+texture = ExtResource( 3 )
+
+[node name="Sparkle2" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -94.6305, -131.486 )
+texture = ExtResource( 3 )

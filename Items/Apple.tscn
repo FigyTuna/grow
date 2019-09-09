@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Item.gd" type="Script" id=1]
+[ext_resource path="res://images/menu/apple.png" type="Texture" id=2]
+[ext_resource path="res://Items/Fertilizer.tscn" type="PackedScene" id=3]
+
+[node name="Apple" type="Node2D"]
+script = ExtResource( 1 )
+item_name = "Apple"
+icon = ExtResource( 2 )
+item_type = 2
+sell_value = 5
+combine_amount = 5
+combine_item = ExtResource( 3 )

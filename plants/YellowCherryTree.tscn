@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://stageplantdata.gd" type="Script" id=1]
+[ext_resource path="res://images/treesfruit/tree.png" type="Texture" id=2]
+[ext_resource path="res://images/treesfruit/cherry/cherrybranches.png" type="Texture" id=3]
+[ext_resource path="res://images/treesfruit/cherry/cherries.png" type="Texture" id=4]
+[ext_resource path="res://images/treesfruit/cherry/cherry1.png" type="Texture" id=5]
+[ext_resource path="res://images/treesfruit/cherry/cherry2.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sway"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.4, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -0.5, 0.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -1.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("stage1:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.543742, 1.2, 1.9, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, -8.0, 8.0, -8.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("stage2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.0, 5.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("stage3:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
+
+[node name="YellowCherryTree" type="Node2D"]
+rotation = 0.00297073
+script = ExtResource( 1 )
+plant_name = "Yellow Cherry Tree"
+baby_stage = 40
+until_adult = 70
+min_life = 300
+max_life = 400
+harvest_time = 30
+item_enum = 1
+max_harvested = 3
+dark = Color( 1, 0.752941, 0, 1 )
+bg = Color( 1, 0.843137, 0.34902, 1 )
+light = Color( 1, 0.894118, 0.552941, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/sway = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 40.6581, -404.19 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 40.6581, -404.19 )
+rotation = -0.0116307
+texture = ExtResource( 3 )
+
+[node name="stage1" type="Sprite" parent="."]
+position = Vector2( 107.625, -420.932 )
+rotation = 0.0116214
+texture = ExtResource( 4 )
+offset = Vector2( -55, 10 )
+
+[node name="stage2" type="Sprite" parent="."]
+position = Vector2( -138.716, -585.956 )
+rotation = -0.0258543
+texture = ExtResource( 5 )
+offset = Vector2( 180, 180 )
+
+[node name="stage3" type="Sprite" parent="."]
+position = Vector2( 81.3164, -686.406 )
+rotation = 0.028659
+texture = ExtResource( 6 )
+offset = Vector2( -45, 280 )
