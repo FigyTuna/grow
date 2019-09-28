@@ -40,9 +40,9 @@ func fertilize():
 		return current_plant.fertilize()
 	return false
 
-func get_colors(dead=false):
+func get_colors():
 	var colors = {}
-	if current_plant and not dead:
+	if current_plant:
 		colors["light"] = current_plant.fd().light
 		colors["dark"] = current_plant.fd().dark
 		colors["bg"] = current_plant.fd().bg
@@ -51,3 +51,19 @@ func get_colors(dead=false):
 		colors["light"] = Color(.6,.6,.6,1)
 		colors["bg"] = Color(.9,.9,.9,1)
 	return colors
+
+func load_game(data, Plant, Plants, d, m, ma):
+	if data["id"] != -1:
+		var plant = Plant.instance()
+		plant.set_plant_data(Plants[data["id"]].instance())
+		plant.connect("grow1", d, "update_discovered")
+		plant.connect("die", m, "message")
+		plant.connect("die", ma, "die_change_colors")
+		set_plant(plant)
+		plant.load_game(data)
+
+func save_game():
+	if current_plant:
+		return current_plant.save_game()
+	else:
+		return {"id": -1}

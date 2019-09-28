@@ -63,6 +63,7 @@ bg = Color( 1, 0, 0.254902, 1 )
 light = Color( 1, 0.34902, 0.564706, 1 )
 change_items = [ "Happy Essence", "Fun Essence", "Special Essence" ]
 changes_enum = [ [ 19 ], [ 24 ], [ 17, 11 ] ]
+id = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

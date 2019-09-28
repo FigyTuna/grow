@@ -61,8 +61,9 @@ max_harvested = 3
 dark = Color( 0, 0.2, 0.6, 1 )
 bg = Color( 0.0666667, 0.376471, 1, 1 )
 light = Color( 0.615686, 0.729412, 1, 1 )
-change_items = [ "Magic Essence", "Special Essence", "Apple" ]
+change_items = [ "Fun Essence", "Magic Essence", "Apple" ]
 changes_enum = [ [ 24 ], [ 25 ], [ 20, 21 ] ]
+id = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

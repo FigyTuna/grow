@@ -9,3 +9,4 @@ item_name = "Special Essence"
 icon = ExtResource( 2 )
 item_type = 1
 sell_value = 2
+id = 10

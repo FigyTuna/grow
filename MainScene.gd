@@ -41,7 +41,8 @@ var Items = [
 	preload("res://Items/Essence1.tscn"),
 	preload("res://Items/Essence2.tscn"),
 	preload("res://Items/Essence3.tscn"),
-	preload("res://Items/Essence4.tscn")
+	preload("res://Items/Essence4.tscn"),
+	preload("res://Items/Fertilizer.tscn")
 ]
 
 var flower_is_held = false
@@ -61,6 +62,11 @@ var hint_plant = true
 var hint_fert = true
 var hint_ess = true
 
+var check_colors_timer = 0
+var check_colors = false
+
+var restart_timer = 0
+
 const destroy_time = 1.2
 const harvest_time = 0.4
 
@@ -68,6 +74,7 @@ func _ready():
 	$AnimationPlayer.play("start")
 	$SpaceMap.colorizer = $ColorRect.material
 	$Dict.connect("message", $Messages, "message")
+	load_game()
 
 func _input(event):
 	if event.is_action_pressed("left"):
@@ -163,6 +170,18 @@ func _input(event):
 				$Inventory.use_up()
 				close_menu()
 	
+	if event.is_action_pressed("save"):
+		save_game()
+	
+	if event.is_action_pressed("restart"):
+		if restart_timer > 0:
+			restart()
+		else:
+			$Messages.message("Are you sure you want")
+			$Messages.message("to start over? Press")
+			$Messages.message("restart again to confirm.")
+			restart_timer = 5
+	
 	if event.is_action_pressed("sell"):
 		var gain = $Inventory.use_item.sell_value * $Inventory.use_quantity
 		$Messages.message("Sold " + $Inventory.use_item.item_name + " x" + str($Inventory.use_quantity))
@@ -186,7 +205,8 @@ func _input(event):
 		$Inventory.use_up($Inventory.use_item.combine_amount)
 
 func die_change_colors(_n,_t):
-	$SpaceMap.update_colors(current_space,true)
+	check_colors_timer = 0.1
+	check_colors = true
 
 func update_money():
 	$Inventory/Money.text = "$" + str(money)
@@ -245,6 +265,15 @@ func _physics_process(delta):
 	
 	if not $Inventory.can_sell and len($Dict.discovered) >= 3:
 		$Inventory.can_sell = true
+	
+	if check_colors and check_colors_timer <= 0:
+		$SpaceMap.update_colors(current_space)
+		check_colors = false
+	elif check_colors:
+		check_colors_timer -= delta
+	
+	if restart_timer > 0:
+		restart_timer -= delta
 
 func _on_buy(item, cost):
 	if money >= cost:
@@ -252,3 +281,56 @@ func _on_buy(item, cost):
 		$Inventory.add_to_inv(item)
 		money -= cost
 		update_money()
+
+func restart():
+	var save = File.new()
+	if save.file_exists("user://savedata.json"):
+		save.open("user://savedata.json", File.WRITE)
+		save.store_line(to_json({"new":true}))
+		save.close()
+	
+	get_tree().reload_current_scene()
+
+func load_game():
+	var save = File.new()
+	if not save.file_exists("user://savedata.json"):
+		return
+	
+	save.open("user://savedata.json", File.READ)
+	var data = parse_json(save.get_as_text())
+	if not data["new"]:
+		money = data["money"]
+		current_space = data["current_space"]
+		$Dict.load_game(data["dict"])
+		$SpaceMap.load_game(data["plants"], Plant, Plants, $Dict, $Messages, self)
+		$Inventory.load_game(data["inv"], Items)
+		$Messages.load_game(data["hints"])
+	save.close()
+	$SpaceMap.go_to_space(current_space)
+	if current_space > 0:
+		$Left.visible = true
+	if current_space >= $SpaceMap.no_spaces - 1:
+		$Right.visible = false
+	$SpaceMap.update_colors(current_space)
+	update_money()
+	
+	hint_ess = false
+	hint_fert = false
+	hint_plant = false
+
+func save_game():
+	var save = File.new()
+	save.open("user://savedata.json", File.WRITE)
+	var data = {
+		"new": false,
+		"money": money,
+		"current_space": current_space,
+		"plants": $SpaceMap.save_game(),
+		"inv": $Inventory.save_game(),
+		"dict": $Dict.save_game(),
+		"hints": $Messages.save_game()
+	}
+	save.store_line(to_json(data))
+	save.close()
+	$Messages.message("Game saved.")
+	$Messages.play_combine()

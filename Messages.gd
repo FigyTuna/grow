@@ -75,3 +75,10 @@ func play_combine():
 
 func play_discover():
 	$Discover.play()
+
+func load_game(data):
+	hint_count = data
+	hint_timer = 0
+
+func save_game():
+	return hint_count

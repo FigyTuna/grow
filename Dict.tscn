@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Dict.gd" type="Script" id=1]
 [ext_resource path="res://images/empty.png" type="Texture" id=2]
 [ext_resource path="res://menutheme.tres" type="Theme" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 90, 45 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 110, 45 )
 
 [node name="Dict" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,7 +28,7 @@ patch_margin_bottom = 30
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 margin_left = 56.0
 margin_top = 485.0
-margin_right = 198.0
+margin_right = 218.0
 margin_bottom = 559.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 90, 90 )
@@ -31,10 +37,34 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
+[node name="NinePatchRect4" type="NinePatchRect" parent="."]
+margin_left = 56.0
+margin_top = 264.0
+margin_right = 218.0
+margin_bottom = 338.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 90, 90 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="."]
+margin_left = 346.0
+margin_top = 264.0
+margin_right = 550.0
+margin_bottom = 338.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 90, 90 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
 [node name="NinePatchRect3" type="NinePatchRect" parent="."]
-margin_left = 27.0
+margin_left = 10.0
 margin_top = 178.0
-margin_right = 576.0
+margin_right = 590.0
 margin_bottom = 252.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 90, 90 )
@@ -57,17 +87,52 @@ icon_scale = 1.5
 fixed_icon_size = Vector2( 64, 64 )
 
 [node name="dict" type="Label" parent="."]
-margin_left = 42.9069
+margin_left = 32.9069
 margin_top = 195.494
-margin_right = 551.907
+margin_right = 566.907
 margin_bottom = 239.494
 theme = ExtResource( 3 )
 text = "Plants discovered: 0/27"
 
-[node name="Money" type="Label" parent="."]
-margin_left = 69.272
-margin_top = 503.876
-margin_right = 575.272
-margin_bottom = 547.876
+[node name="shop" type="Label" parent="."]
+margin_left = 85.0
+margin_top = 586.0
+margin_right = 201.0
+margin_bottom = 630.0
 theme = ExtResource( 3 )
+text = "Shop"
+
+[node name="shop2" type="Label" parent="."]
+margin_left = 84.1796
+margin_top = 279.789
+margin_right = 200.18
+margin_bottom = 323.789
+theme = ExtResource( 3 )
+text = "Save"
+
+[node name="shop3" type="Label" parent="."]
+margin_left = 364.402
+margin_top = 280.819
+margin_right = 531.402
+margin_bottom = 324.819
+theme = ExtResource( 3 )
+text = "Restart"
+
+[node name="Money" type="Label" parent="."]
+margin_left = 71.0
+margin_top = 504.0
+margin_right = 202.0
+margin_bottom = 548.0
+theme = ExtResource( 3 )
+align = 1
+
+[node name="Save" type="TouchScreenButton" parent="."]
+position = Vector2( 136.77, 300.972 )
+shape = SubResource( 1 )
+action = "save"
+
+[node name="Restart" type="TouchScreenButton" parent="."]
+position = Vector2( 447.77, 300.972 )
+shape = SubResource( 2 )
+action = "restart"
 [connection signal="item_selected" from="ItemList" to="." method="_on_item_selected"]

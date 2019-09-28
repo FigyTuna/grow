@@ -14,7 +14,10 @@ export var combine_amount = -1
 export (Resource)var combine_item
 
 # warning-ignore:unused_class_variable
+export var id = 0
+
+# warning-ignore:unused_class_variable
 var quantity = 1
 
-func _ready():
-	pass
+func save_game():
+	return {"id": id, "quantity": quantity}

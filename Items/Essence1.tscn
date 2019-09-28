@@ -8,3 +8,4 @@ script = ExtResource( 1 )
 item_name = "Happy Essence"
 icon = ExtResource( 2 )
 item_type = 1
+id = 7

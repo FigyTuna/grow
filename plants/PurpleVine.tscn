@@ -61,6 +61,7 @@ bg = Color( 0.596078, 0.4, 0.4, 1 )
 light = Color( 0.866667, 0.8, 0.933333, 1 )
 change_items = [ "Apple", "Special Essence" ]
 changes_enum = [ [ 21, 25 ], [ 18, 19, 15 ] ]
+id = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

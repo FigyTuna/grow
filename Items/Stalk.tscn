@@ -10,3 +10,4 @@ icon = ExtResource( 2 )
 item_type = 3
 sell_value = 6
 combine_amount = 20
+id = 2

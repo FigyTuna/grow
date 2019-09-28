@@ -61,6 +61,7 @@ bg = Color( 0.596078, 0.4, 0.4, 1 )
 light = Color( 0.866667, 0.8, 0.933333, 1 )
 change_items = [ "Cherry" ]
 changes_enum = [ [ 22, 23 ] ]
+id = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

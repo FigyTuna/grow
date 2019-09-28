@@ -107,3 +107,23 @@ func update_buttons():
 		$Use.visible = false
 		$Combine.visible = false
 		$Sell.visible = false
+
+func load_game(data, Items):
+	inv = []
+	$ItemList.remove_item(0)
+	$ItemList.remove_item(0)
+	can_sell = data["can_sell"]
+	for item_data in data["inv"]:
+		var item = Items[item_data["id"]].instance()
+		item.quantity = item_data["quantity"]
+		inv.append(item)
+		$ItemList.add_item("x" + str(item.quantity), item.icon)
+
+func save_game():
+	var data = {
+		"can_sell": can_sell,
+		"inv": []
+	}
+	for item in inv:
+		data["inv"].append(item.save_game())
+	return data

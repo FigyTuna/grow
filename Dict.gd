@@ -25,9 +25,9 @@ func update_discovered(n):
 	if discovered.find(n) < 0:
 		discovered.append(n)
 		$dict.text = "Plants discovered: " + str(len(discovered)) + "/27"
-		if n.find("Yellow Cherry Tree") > -1:
+		if n.find("Yellow Cherry Tree") > -1 or n.find("Green Apple Tree") > -1:
 			emit_signal("message", "Discovered ")
-			emit_signal("message", n + "1")
+			emit_signal("message", n + "!")
 		else:
 			emit_signal("message", "Discovered " + n + "!")
 		if len(discovered) >= 27:
@@ -55,3 +55,10 @@ func _on_item_selected(index):
 		emit_signal("buy", SellSeed2.instance(), cost2)
 	else:
 		emit_signal("buy", SellFertilizer.instance(), cost3)
+
+func load_game(data):
+	discovered = data
+	$dict.text = "Plants discovered: " + str(len(discovered)) + "/27"
+
+func save_game():
+	return discovered

@@ -28,6 +28,9 @@ export (Color)var light
 export (Array, String, "Disabled", "Happy Essence", "Fun Essence", "Magic Essence", "Special Essence", "Apple", "Cherry")var change_items
 export (Array, Array, int, "1RP","2YT","3GV","4PL","5PM","6YP","7PT","8PT","9BM","10OL","11TV","12RT","13PM","14PV","15PL","16SL","17GL","18SM","19GP","20OP","RA","GA","RC","YC","GB","YB","GB")var changes_enum
 
+# warning-ignore:unused_class_variable
+export var id = 0
+
 func _ready():
 	$AnimationPlayer.play("sway")
 

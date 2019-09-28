@@ -52,8 +52,8 @@ func go_to_space(num):
 	old_space = num
 	update_colors(num)
 
-func update_colors(num,dead=false):
-	set_colors(spaces[num].get_colors(dead))
+func update_colors(num):
+	set_colors(spaces[num].get_colors())
 
 func set_colors(colors):
 	old_colors = new_colors
@@ -77,3 +77,19 @@ func change(space, item, Plants):
 
 func fertilize(space):
 	return spaces[space].fertilize()
+
+func load_game(data, Plant, Plants, d, m, ma):
+# warning-ignore:unused_variable
+	for i in range(data["no_spaces"] - 3):
+		add_space()
+	for i in range(no_spaces):
+		spaces[i].load_game(data["plants"][i], Plant, Plants, d, m, ma)
+
+func save_game():
+	var data = {
+		"no_spaces": no_spaces,
+		"plants": []
+	}
+	for s in spaces:
+		data["plants"].append(s.save_game())
+	return data

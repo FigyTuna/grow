@@ -119,3 +119,25 @@ func set_plant_data(pd):
 
 func fd():
 	return $Data.get_child(0)
+
+func load_game(data):
+	age = data["age"]
+	baby = data["baby"]
+	adult = data["adult"]
+	harvest_timer = data["harvest_timer"]
+	lifetime = data["lifetime"]
+	if not baby:
+		leave_baby()
+	if adult:
+		enter_adult()
+		$AnimationPlayer.seek(4.9, true)
+
+func save_game():
+	return {
+		"id": fd().id,
+		"age": age,
+		"baby": baby,
+		"adult": adult,
+		"harvest_timer": harvest_timer,
+		"lifetime": lifetime
+	}

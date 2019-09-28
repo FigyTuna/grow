@@ -67,6 +67,14 @@ combine={
 "deadzone": 0.5,
 "events": [  ]
 }
+save={
+"deadzone": 0.5,
+"events": [  ]
+}
+restart={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [input_devices]
 

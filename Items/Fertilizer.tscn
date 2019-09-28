@@ -9,3 +9,4 @@ item_name = "Fertilizer"
 icon = ExtResource( 2 )
 item_type = 4
 sell_value = 15
+id = 11

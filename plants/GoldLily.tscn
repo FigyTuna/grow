@@ -61,6 +61,7 @@ max_harvested = 5
 dark = Color( 0.403922, 0.364706, 0.2, 1 )
 bg = Color( 0.886275, 0.835294, 0.639216, 1 )
 light = Color( 0.964706, 0.945098, 0.882353, 1 )
+id = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/sway = SubResource( 1 )

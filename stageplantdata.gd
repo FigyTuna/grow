@@ -24,6 +24,9 @@ export (Color)var bg
 # warning-ignore:unused_class_variable
 export (Color)var light
 
+# warning-ignore:unused_class_variable
+export var id = 0
+
 func _ready():
 	$AnimationPlayer.play("sway")
 

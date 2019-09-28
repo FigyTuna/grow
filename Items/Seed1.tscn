@@ -10,3 +10,4 @@ item_name = "Basic Seed"
 icon = ExtResource( 2 )
 combine_amount = 15
 combine_item = ExtResource( 3 )
+id = 3

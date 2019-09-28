@@ -102,10 +102,11 @@ shape = SubResource( 1 )
 action = "sell"
 
 [node name="Money" type="Label" parent="."]
-margin_left = 54.2723
-margin_top = 367.876
-margin_right = 171.272
-margin_bottom = 411.876
+margin_left = 54.0
+margin_top = 368.0
+margin_right = 164.0
+margin_bottom = 412.0
 theme = ExtResource( 3 )
+align = 1
 [connection signal="item_selected" from="ItemList" to="." method="_on_item_selected"]
 [connection signal="item_selected" from="UseSlot" to="." method="_on_UseSlot_selected"]
